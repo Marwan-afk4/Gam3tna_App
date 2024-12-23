@@ -11,7 +11,8 @@ class Universty extends Model
     protected $fillable =[
         'name',
         'email',
-        'location'
+        'location',
+        'image'
     ];
 
     public function collages(){

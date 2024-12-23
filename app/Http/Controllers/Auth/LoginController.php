@@ -29,7 +29,8 @@ class LoginController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             if (Auth::user()->role === 'superadmin') {
                 return redirect()->route('admin.dashboard');
-            } else {
+            }
+            else {
                 return redirect()->route('user.dashboard');
             }
         }
@@ -43,7 +44,7 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/login')->with('success', 'Logged out successfully.');
     }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public function showSignupForm(Request $request)
     {
         $universties = Universty::all();
@@ -85,7 +86,6 @@ class LoginController extends Controller
         return redirect()->route('login')->with('success', 'Account created successfully!');
     }
 
-    // This function is for fetching colleges based on universty_id dynamically
     public function getColleges($universityId)
 {
     $colleges = Collage::where('universty_id', $universityId)->get();
