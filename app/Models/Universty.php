@@ -16,5 +16,11 @@ class Universty extends Model
     ];
 
     public function collages(){
-        return $this->hasMany(Collage::class);}
+        return $this->hasMany(Collage::class);
+    }
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }
+

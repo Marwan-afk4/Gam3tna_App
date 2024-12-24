@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CollegeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/welcome', function () {
@@ -38,3 +39,20 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admin/universities/{universityId}/colleges/{id}', [CollegeController::class, 'destroy'])->name('admin.colleges.destroy');
 
 });
+
+Route::middleware(['auth'])->get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
+// Contact Us
+Route::get('/contact-us', function () {
+    return view('user.contact');
+})->name('contact');
+// submit contact
+Route::post('/contact-us', function () {
+    return redirect()->route('contact')->with('success', 'Message sent successfully!');
+})->name('contact.submit');
+
+
+Route::post('/contact-us', [UserController::class, 'submit'])->name('contact.submit');
+
+
+
+

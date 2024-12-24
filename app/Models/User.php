@@ -27,7 +27,7 @@ class User extends Authenticatable implements AuthenticatableContract
         'password','remember_token',
     ];
 
-    public function college(){
+    public function collage(){
         return $this->belongsTo(Collage::class);
     }
 

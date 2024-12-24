@@ -16,4 +16,8 @@ class Collage extends Model
     public function universty(){
         return $this->belongsTo(Universty::class);
     }
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }
